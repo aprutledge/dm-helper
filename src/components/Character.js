@@ -16,7 +16,7 @@ export const Character = (props) => {
                     <p>{"INT: " + props.char.attributes.int}</p>
                     <p>{"CHA: " + props.char.attributes.cha}</p>
                 </Card.Text>
-                <Button variant="primary">Delete</Button>
+                <Button variant="primary" onClick={() => props.handleDeleteChar(props.id)}>Delete</Button>
             </Card.Body>
         </Card>
     );
