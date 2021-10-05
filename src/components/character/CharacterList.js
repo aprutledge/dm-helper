@@ -1,5 +1,8 @@
-import { Character } from "./Character";
 import { useState } from "react";
+
+import { Character } from "./Character";
+import FloatingMenu from "../ui/FloatingMenu"
+import AddCharacterModal from "./AddCharacterModal";
 
 export const CharacterList = (props) => {
 
@@ -48,13 +51,25 @@ export const CharacterList = (props) => {
         }
     ]);
 
+    const [modalShow, setModalShow] = useState(false);
+
     const handleDeleteChar = (id) => {
         setCharacter(() => character.filter(char => char.id !== id))
+    }
+
+    const toggleModal = (display) => {
+        console.log("display = " + display);
+        setModalShow(display);
     }
 
     return (
         <div className={`d-flex flex-row flex-wrap justify-content-center pt-3 mb-5`}>
             {character.map((char) => <Character id={char.id} char={char} handleDeleteChar={handleDeleteChar} />)}
+            <FloatingMenu action={toggleModal} />
+
+            <AddCharacterModal
+                show={modalShow}
+                onHide={() => setModalShow(false)} />
         </div>
     );
 }

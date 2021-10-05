@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <Navbar>
             <Container fluid>
-                <Navbar.Brand>DMHelper</Navbar.Brand>
+                <Navbar.Brand href="/home">DMHelper</Navbar.Brand>
             </Container>
         </Navbar>
     );

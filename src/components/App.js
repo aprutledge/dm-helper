@@ -2,23 +2,23 @@ import { Col, Container, Row } from 'react-bootstrap';
 
 import './App.css';
 
-import { CharacterList } from './CharacterList';
 import Sidebar from './Sidebar';
 import Header from './Header';
+import CustomRouter from "./CustomRouter";
 
 function App() {
   return (
-    <div className="App">
-      <Container fluid className="ms-1">
+    <div className="App vh-95">
+      <Container fluid className="ms-1 h-100">
         <Row>
           <Header />
         </Row>
-        <Row>
+        <Row className="h-100">
           <Col lg="2" md="2" xs="2" className="py-2">
             <Sidebar />
           </Col>
           <Col lg="10" md="10" xs="10">
-            <CharacterList />
+            <CustomRouter />
           </Col>
         </Row>
       </Container>
