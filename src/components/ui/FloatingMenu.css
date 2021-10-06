@@ -1,46 +1,47 @@
 .floating-menu {
-	position: absolute;
-	right: 8px;
-	bottom: 8px;
-	height: 42px;
-	margin-bottom: 20px;
-	text-align: right;
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  height: 42px;
+  margin-bottom: 20px;
+  text-align: right;
+  /*transition: height 250ms ease-in-out;*/
 }
 
 .floating-menu.open {
-	height: auto;
-	margin-bottom: 20px;
-	overflow: hidden;
+  height: auto;
+  margin-bottom: 18px;
+  overflow: hidden;
 }
 
 .floating-menu.open .floating-menu-item {
-	margin-top: 8px;
+  margin-top: 8px;
 }
 
-.floating-menu-item label{
-	display: inline-block;
-	margin-right: 8px;
-	padding: 4px 10px;
-	border-radius: 12px;
-	background: rgba(0,0,0,.25);
-	opacity: 0;
+.floating-menu-item label {
+  display: inline-block;
+  margin-right: 8px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.25);
+  opacity: 0;
 }
 
-.floating-menu-icon{
-	display: inline-block;
-	width: 44px;
-	height: 44px;
-	line-height: 36px;
-	vertical-align: middle;
-	background: #0d6efd;
-	border-radius: 50%;
-	border: none;
-	box-shadow: 0 2px 4px rgba(0,0,0,.2);
-	text-align: center;
+.floating-menu-icon {
+  display: inline-block;
+  width: 44px;
+  height: 44px;
+  line-height: 36px;
+  vertical-align: middle;
+  background: #0d6efd;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-align: center;
 }
 
 .floating-menu-icon .material-icons {
-	font-size: 32px;
-	color: #fff;
-	vertical-align: middle;
+  font-size: 32px;
+  color: #fff;
+  vertical-align: middle;
 }

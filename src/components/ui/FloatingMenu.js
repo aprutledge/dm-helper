@@ -1,23 +1,52 @@
-import React from "react";
-import { useState } from "react";
-import { PlusCircle, XCircle } from "react-feather"
+import React from 'react'
+import { useState } from 'react'
+import { PlusCircle, XCircle, FileText, Menu } from 'react-feather'
 
-import FloatingMenuItem from "./FloatingMenuItem"
+import FloatingMenuItem from './FloatingMenuItem'
 
-import './FloatingMenu.css'
+//import './FloatingMenu.css'
 
-const FloatingMenu = props => {
+const FloatingMenu = (props) => {
+  const [toggled, setToggled] = useState(false)
 
-    let buttons = [];
-    let className = "floating-menu";
-    let icon = <PlusCircle className="floating-menu-icon" />;
+  const toggleMenu = () => {
+    setToggled(!toggled)
+  }
 
-    buttons.push(<FloatingMenuItem icon={icon} action={props.action} key="m" />);
+  let buttons = []
+  let icon = <PlusCircle className='floating-menu-icon' />
 
-    return (
-        <div className={className}>
-            {buttons}
-        </div>);
+  if (toggled) {
+    buttons.push(
+      <FloatingMenuItem
+        icon={<PlusCircle size={32} />}
+        action={props.toggleModal}
+        toggleMenu={toggleMenu}
+        key='i1'
+      />
+    )
+
+    buttons.push(
+      <FloatingMenuItem
+        icon={<FileText size={32} />}
+        action={props.handleExport}
+        toggleMenu={toggleMenu}
+        key='i2'
+      />
+    )
+  }
+
+  buttons.push(
+    <FloatingMenuItem
+      icon={toggled ? <XCircle size={36} /> : <Menu size={36} />}
+      toggleMenu={toggleMenu}
+      key='m'
+    />
+  )
+
+  return (
+    <div className='position-absolute bottom-0 end-0 me-3 mb-3'>{buttons}</div>
+  )
 }
 
 export default FloatingMenu

@@ -1,25 +1,13 @@
-import localforage from "localforage";
+import localforage from 'localforage'
 
-const addCharacter = () => {
+const addCharacter = () => {}
 
-}
+const deleteCharacter = () => {}
 
-const deleteCharacter = () => {
+const getCharacterData = () => {}
 
-}
+const getAllCharacterData = () => {}
 
-const getCharacterData = () => {
+const setCharacterData = () => {}
 
-}
-
-const getAllCharacterData = () => {
-
-}
-
-const setCharacterData = () => {
-
-}
-
-const setAllCharacterData = () => {
-
-}
+const setAllCharacterData = () => {}
