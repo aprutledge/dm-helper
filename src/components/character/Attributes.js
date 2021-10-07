@@ -8,3 +8,5 @@ class Attributes {
     this.cha = cha
   }
 }
+
+export default Attributes

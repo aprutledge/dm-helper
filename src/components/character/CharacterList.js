@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 import { Character } from './Character'
+import CharacterModel from './characterModel'
 import FloatingMenu from '../ui/FloatingMenu'
 import AddCharacterModal from './AddCharacterModal'
+import CharacterService from '../../services/CharacterService'
+import FileService from '../../services/FileService'
 
 export const CharacterList = (props) => {
   const [character, setCharacter] = useState([
@@ -49,8 +52,43 @@ export const CharacterList = (props) => {
       },
     },
   ])
-
+  const [exportDownloadURL, setExportDownloadURL] = useState('')
   const [modalShow, setModalShow] = useState(false)
+  const inputRef = useRef(null)
+
+  //TODO
+  const handleSaveChar = (
+    name,
+    race,
+    charClass,
+    str,
+    dex,
+    con,
+    wis,
+    int,
+    cha
+  ) => {
+    const tempChars = [
+      ...character,
+      new CharacterModel(
+        character.length + 1,
+        name,
+        race,
+        charClass,
+        str,
+        dex,
+        con,
+        wis,
+        int,
+        cha
+      ),
+    ]
+    character.forEach((character, index) => {
+      character.id = index + 1
+    })
+    setCharacter(tempChars)
+    //CharacterService.saveTowns(tempChars)
+  }
 
   const handleDeleteChar = (id) => {
     setCharacter(() => character.filter((char) => char.id !== id))
@@ -59,6 +97,14 @@ export const CharacterList = (props) => {
   const toggleModal = (display) => {
     console.log('display = ' + display)
     setModalShow(display)
+  }
+
+  const handleExport = () => {
+    console.log('export')
+    FileService.exportAllToJson('text.json').then((fileUrl) => {
+      setExportDownloadURL(fileUrl)
+      inputRef.current.click()
+    })
   }
 
   return (
@@ -72,9 +118,21 @@ export const CharacterList = (props) => {
           handleDeleteChar={handleDeleteChar}
         />
       ))}
-      <FloatingMenu action={toggleModal} />
+      <FloatingMenu toggleModal={toggleModal} handleExport={handleExport} />
 
-      <AddCharacterModal show={modalShow} onHide={() => setModalShow(false)} />
+      <AddCharacterModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        handleSaveChar={handleSaveChar}
+      />
+      <a
+        style={{ display: 'none' }}
+        download='text.json'
+        href={exportDownloadURL}
+        ref={inputRef}
+      >
+        download
+      </a>
     </div>
   )
 }

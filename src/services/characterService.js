@@ -11,3 +11,7 @@ const getAllCharacterData = () => {}
 const setCharacterData = () => {}
 
 const setAllCharacterData = () => {}
+
+const CharacterService = {}
+
+export default CharacterService
