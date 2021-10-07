@@ -12,6 +12,13 @@ const setCharacterData = () => {}
 
 const setAllCharacterData = () => {}
 
-const CharacterService = {}
+const CharacterService = {
+  addCharacter,
+  deleteCharacter,
+  getCharacterData,
+  getAllCharacterData,
+  setCharacterData,
+  setAllCharacterData,
+}
 
 export default CharacterService

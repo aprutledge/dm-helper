@@ -5,7 +5,7 @@ const AddCharacterModal = (props) => {
   const { handleSaveChar, ...other } = props
 
   const [characterName, setCharacterName] = useState('')
-  const [className, setClassName] = useState('')
+  const [characterClass, setCharacterClass] = useState('')
   const [race, setRace] = useState('')
   const [str, setStr] = useState('')
   const [dex, setDex] = useState('')
@@ -18,9 +18,9 @@ const AddCharacterModal = (props) => {
     const characterName = e.target.value
     setCharacterName(characterName)
   }
-  const onClassNameInput = (e) => {
-    const className = e.target.value
-    setClassName(className)
+  const onCharacterClassInput = (e) => {
+    const characterClass = e.target.value
+    setCharacterClass(characterClass)
   }
   const onRaceInput = (e) => {
     const race = e.target.value
@@ -53,107 +53,71 @@ const AddCharacterModal = (props) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault()
-    handleSaveChar(characterName, className, race, str, dex, con, wis, int, cha)
+    handleSaveChar(characterName, characterClass, race, str, dex, con, wis, int, cha)
     props.onHide()
   }
 
   return (
-    <Modal
-      {...props}
-      size='lg'
-      aria-labelledby='contained-modal-title-vcenter'
-      centered
-    >
+    <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter' centered>
       <Modal.Header closeButton>
-        <Modal.Title id='contained-modal-title-vcenter'>
-          Add a Character
-        </Modal.Title>
+        <Modal.Title id='contained-modal-title-vcenter'>Add a Character</Modal.Title>
       </Modal.Header>
-      <Form onSubmit={onFormSubmit}>
-        <Form.Group className='mb-3' controlId='formCharacterName'>
-          <Form.Label>Character Name</Form.Label>
-          <Form.Control
-            onChange={onCharacterNameInput}
-            value={characterName}
-            placeholder='Enter Character Name'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formClassName'>
-          <Form.Label>Class</Form.Label>
-          <Form.Control
-            onChange={onClassNameInput}
-            value={className}
-            placeholder='Enter Class'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formRace'>
-          <Form.Label>Race</Form.Label>
-          <Form.Control
-            onChange={onRaceInput}
-            value={race}
-            placeholder='Enter Race'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formStr'>
-          <Form.Label>STR</Form.Label>
-          <Form.Control
-            onChange={onStrInput}
-            value={str}
-            placeholder='Enter Strength'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formDex'>
-          <Form.Label>DEX</Form.Label>
-          <Form.Control
-            onChange={onDexInput}
-            value={dex}
-            placeholder='Enter Dexterity'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formCon'>
-          <Form.Label>CON</Form.Label>
-          <Form.Control
-            onChange={onConInput}
-            value={con}
-            placeholder='Enter Constitution'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formWis'>
-          <Form.Label>WIS</Form.Label>
-          <Form.Control
-            onChange={onWisInput}
-            value={wis}
-            placeholder='Enter Wisdom'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formInt'>
-          <Form.Label>INT</Form.Label>
-          <Form.Control
-            onChange={onIntInput}
-            value={int}
-            placeholder='Enter Intelligence'
-          />
-        </Form.Group>
-        <Form.Group className='mb-3' controlId='formCha'>
-          <Form.Label>CHA</Form.Label>
-          <Form.Control
-            onChange={onChaInput}
-            value={cha}
-            placeholder='Enter Charisma'
-          />
-        </Form.Group>
-        <Form.Group>
-          <Button className='mx-1' type='submit'>
-            Save
-          </Button>
-          <Button className='mx-1' onClick={props.onHide}>
-            Close
-          </Button>
-        </Form.Group>
-      </Form>
-      <Modal.Footer>
-        <Button onClick={props.onHide}>Close</Button>
-      </Modal.Footer>
+      <Modal.Body>
+        <Form onSubmit={onFormSubmit}>
+          <Form.Group className='mb-3' controlId='formCharacterName'>
+            <Form.Label>Character Name</Form.Label>
+            <Form.Control
+              onChange={onCharacterNameInput}
+              value={characterName}
+              placeholder='Enter Character Name'
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formCharacterClass'>
+            <Form.Label>Class</Form.Label>
+            <Form.Control
+              onChange={onCharacterClassInput}
+              value={characterClass}
+              placeholder='Enter Class'
+            />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formRace'>
+            <Form.Label>Race</Form.Label>
+            <Form.Control onChange={onRaceInput} value={race} placeholder='Enter Race' />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formStr'>
+            <Form.Label>STR</Form.Label>
+            <Form.Control onChange={onStrInput} value={str} placeholder='Enter Strength' />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formDex'>
+            <Form.Label>DEX</Form.Label>
+            <Form.Control onChange={onDexInput} value={dex} placeholder='Enter Dexterity' />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formCon'>
+            <Form.Label>CON</Form.Label>
+            <Form.Control onChange={onConInput} value={con} placeholder='Enter Constitution' />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formWis'>
+            <Form.Label>WIS</Form.Label>
+            <Form.Control onChange={onWisInput} value={wis} placeholder='Enter Wisdom' />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formInt'>
+            <Form.Label>INT</Form.Label>
+            <Form.Control onChange={onIntInput} value={int} placeholder='Enter Intelligence' />
+          </Form.Group>
+          <Form.Group className='mb-3' controlId='formCha'>
+            <Form.Label>CHA</Form.Label>
+            <Form.Control onChange={onChaInput} value={cha} placeholder='Enter Charisma' />
+          </Form.Group>
+          <Form.Group>
+            <Button className='mx-1' type='submit'>
+              Save
+            </Button>
+            <Button className='mx-1' onClick={props.onHide}>
+              Close
+            </Button>
+          </Form.Group>
+        </Form>
+      </Modal.Body>
     </Modal>
   )
 }

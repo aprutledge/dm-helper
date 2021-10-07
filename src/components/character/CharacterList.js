@@ -9,79 +9,19 @@ import FileService from '../../services/FileService'
 
 export const CharacterList = (props) => {
   const [character, setCharacter] = useState([
-    {
-      id: 0,
-      name: 'Alex',
-      race: 'Human',
-      class: 'Fighter',
-      attributes: {
-        str: 10,
-        dex: 10,
-        con: 10,
-        wis: 10,
-        int: 10,
-        cha: 10,
-      },
-    },
-    {
-      id: 1,
-      name: 'Katie',
-      race: 'Human',
-      class: 'Barbarian',
-      attributes: {
-        str: 10,
-        dex: 10,
-        con: 10,
-        wis: 10,
-        int: 10,
-        cha: 10,
-      },
-    },
-    {
-      id: 2,
-      name: 'Matt',
-      race: 'Human',
-      class: 'Wizard',
-      attributes: {
-        str: 10,
-        dex: 10,
-        con: 10,
-        wis: 10,
-        int: 10,
-        cha: 10,
-      },
-    },
+    new CharacterModel(0, 'Alex', 'Human', 'Fighter', 10, 10, 10, 10, 10, 10),
+    new CharacterModel(1, 'Katie', 'Human', 'Barbarian', 10, 10, 10, 10, 10, 10),
+    new CharacterModel(2, 'Matt', 'Human', 'Wizard', 10, 10, 10, 10, 10, 10),
   ])
   const [exportDownloadURL, setExportDownloadURL] = useState('')
   const [modalShow, setModalShow] = useState(false)
   const inputRef = useRef(null)
 
   //TODO
-  const handleSaveChar = (
-    name,
-    race,
-    charClass,
-    str,
-    dex,
-    con,
-    wis,
-    int,
-    cha
-  ) => {
+  const handleSaveChar = (name, race, charClass, str, dex, con, wis, int, cha) => {
     const tempChars = [
       ...character,
-      new CharacterModel(
-        character.length + 1,
-        name,
-        race,
-        charClass,
-        str,
-        dex,
-        con,
-        wis,
-        int,
-        cha
-      ),
+      new CharacterModel(character.length + 1, name, race, charClass, str, dex, con, wis, int, cha),
     ]
     character.forEach((character, index) => {
       character.id = index + 1
@@ -94,9 +34,8 @@ export const CharacterList = (props) => {
     setCharacter(() => character.filter((char) => char.id !== id))
   }
 
-  const toggleModal = (display) => {
-    console.log('display = ' + display)
-    setModalShow(display)
+  const toggleModal = () => {
+    setModalShow(!modalShow)
   }
 
   const handleExport = () => {
@@ -108,15 +47,9 @@ export const CharacterList = (props) => {
   }
 
   return (
-    <div
-      className={`d-flex flex-row flex-wrap justify-content-center pt-3 mb-5`}
-    >
+    <div className={`d-flex flex-row flex-wrap justify-content-center pt-3 mb-5`}>
       {character.map((char) => (
-        <Character
-          id={char.id}
-          char={char}
-          handleDeleteChar={handleDeleteChar}
-        />
+        <Character id={char.id} char={char} handleDeleteChar={handleDeleteChar} />
       ))}
       <FloatingMenu toggleModal={toggleModal} handleExport={handleExport} />
 
@@ -125,12 +58,7 @@ export const CharacterList = (props) => {
         onHide={() => setModalShow(false)}
         handleSaveChar={handleSaveChar}
       />
-      <a
-        style={{ display: 'none' }}
-        download='text.json'
-        href={exportDownloadURL}
-        ref={inputRef}
-      >
+      <a style={{ display: 'none' }} download='text.json' href={exportDownloadURL} ref={inputRef}>
         download
       </a>
     </div>

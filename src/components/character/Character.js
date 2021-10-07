@@ -11,7 +11,7 @@ export const Character = (props) => {
       <Card.Body>
         <Card.Title>{props.char.name}</Card.Title>
         <Card.Subtitle className='mb-2 text-muted'>
-          {'A ' + props.char.race + ' ' + props.char.class + '.'}
+          {'A ' + props.char.race + ' ' + props.char.charClass + '.'}
         </Card.Subtitle>
         <Card.Text>
           <p>{'STR: ' + props.char.attributes.str}</p>
@@ -21,10 +21,7 @@ export const Character = (props) => {
           <p>{'INT: ' + props.char.attributes.int}</p>
           <p>{'CHA: ' + props.char.attributes.cha}</p>
         </Card.Text>
-        <Button
-          variant='primary'
-          onClick={() => props.handleDeleteChar(props.id)}
-        >
+        <Button variant='primary' onClick={() => props.handleDeleteChar(props.id)}>
           Delete
         </Button>
       </Card.Body>
