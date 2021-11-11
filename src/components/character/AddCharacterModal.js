@@ -58,7 +58,7 @@ const AddCharacterModal = (props) => {
   }
 
   return (
-    <Modal {...props} size='lg' aria-labelledby='contained-modal-title-vcenter' centered>
+    <Modal {...other} size='lg' aria-labelledby='contained-modal-title-vcenter' centered>
       <Modal.Header closeButton>
         <Modal.Title id='contained-modal-title-vcenter'>Add a Character</Modal.Title>
       </Modal.Header>

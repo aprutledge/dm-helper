@@ -1,5 +1,5 @@
 import React from 'react'
-import { Nav } from 'react-bootstrap'
+import { Nav, NavItem } from 'react-bootstrap'
 import { withRouter } from 'react-router'
 
 const Side = (props) => {
@@ -15,6 +15,9 @@ const Side = (props) => {
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href='towns'>Towns</Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link href='dice'>Dice</Nav.Link>
         </Nav.Item>
       </Nav>
     </>

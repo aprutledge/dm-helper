@@ -3,6 +3,7 @@ import { CharacterList } from './character/CharacterList'
 import NPCList from './npc/NPCList'
 import TownList from './town/TownList'
 import Home from './Home'
+import { DiceRoller } from './dice/DiceRoller'
 
 const CustomRouter = () => {
   return (
@@ -15,6 +16,9 @@ const CustomRouter = () => {
       </Route>
       <Route path='/towns'>
         <TownList />
+      </Route>
+      <Route path='/dice'>
+        <DiceRoller />
       </Route>
       <Route path='/'>
         <Home />
