@@ -7,7 +7,7 @@ import AddCharacterModal from './AddCharacterModal'
 import CharacterService from '../../services/CharacterService'
 import FileService from '../../services/FileService'
 
-export const CharacterList = (props) => {
+const CharacterList = (props) => {
   const [character, setCharacter] = useState([])
   const [exportDownloadURL, setExportDownloadURL] = useState('')
   const [modalShow, setModalShow] = useState(false)
@@ -25,10 +25,31 @@ export const CharacterList = (props) => {
       .catch((err) => alert(err))
   }
 
-  const handleSaveChar = (name, race, charClass, str, dex, con, wis, int, cha) => {
+  const handleSaveChar = (
+    name,
+    race,
+    charClass,
+    str,
+    dex,
+    con,
+    wis,
+    int,
+    cha
+  ) => {
     const tempChars = [
       ...character,
-      new Character(character.length + 1, name, race, charClass, str, dex, con, wis, int, cha),
+      new Character(
+        character.length + 1,
+        name,
+        race,
+        charClass,
+        str,
+        dex,
+        con,
+        wis,
+        int,
+        cha
+      ),
     ]
     character.forEach((character, index) => {
       character.id = index + 1
@@ -56,9 +77,15 @@ export const CharacterList = (props) => {
   }
 
   return (
-    <div className={`d-flex flex-row flex-wrap justify-content-center pt-3 mb-5`}>
+    <div
+      className={`d-flex flex-row flex-wrap justify-content-center pt-3 mb-5`}
+    >
       {character.map((char) => (
-        <CharacterCard id={char.id} char={char} handleDeleteChar={handleDeleteChar} />
+        <CharacterCard
+          id={char.id}
+          char={char}
+          handleDeleteChar={handleDeleteChar}
+        />
       ))}
       <FloatingMenu toggleModal={toggleModal} handleExport={handleExport} />
 
@@ -67,9 +94,16 @@ export const CharacterList = (props) => {
         onHide={() => setModalShow(false)}
         handleSaveChar={handleSaveChar}
       />
-      <a style={{ display: 'none' }} download='text.json' href={exportDownloadURL} ref={inputRef}>
+      <a
+        style={{ display: 'none' }}
+        download='text.json'
+        href={exportDownloadURL}
+        ref={inputRef}
+      >
         download
       </a>
     </div>
   )
 }
+
+export default CharacterList

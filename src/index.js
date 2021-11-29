@@ -5,10 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './components/App'
 import reportWebVitals from './reportWebVitals'
+import { UserProvider } from './contexts/UserContext'
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <UserProvider>
+      <App />
+    </UserProvider>
   </BrowserRouter>,
   document.getElementById('root')
 )
